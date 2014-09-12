@@ -17,6 +17,7 @@
 package com.agnie.gwt.codemirror.test.client;
 
 import com.agnie.gwt.codemirror.client.CodeMirror;
+import com.agnie.gwt.codemirror.client.OnFocusHandler;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -39,6 +40,10 @@ public class EditorTest extends Composite {
 
 	public EditorTest() {
 		initWidget(uiBinder.createAndBindUi(this));
+	}
+
+	public void addFocusHandler(OnFocusHandler handler) {
+		editor.addFocusHandler(handler);
 	}
 
 	public String getValue() {

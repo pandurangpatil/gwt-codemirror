@@ -17,6 +17,7 @@
 package com.agnie.gwt.codemirror.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.TextAreaElement;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -24,6 +25,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
  * @author Pandurang Patil 11-Sep-2014
@@ -80,12 +82,27 @@ public class CodeMirror extends Composite {
 		config.setAutoCloseBrackets(autoCloseBrackets);
 	}
 
+	/**
+	 * Add focus handler
+	 * 
+	 * @param handler
+	 * @return
+	 */
+	public HandlerRegistration addFocusHandler(OnFocusHandler handler) {
+		return privateEventBus.addHandler(OnFocusEvent.TYPE, handler);
+	}
+
+	void onFocus(JavaScriptObject editor) {
+		Editor ed = (Editor) editor;
+		privateEventBus.fireEvent(new OnFocusEvent(ed));
+	}
+
 	@Override
 	protected void onLoad() {
 		super.onLoad();
 		GWT.log("Editor is being formed.");
 		if (editor == null) {
-			editor = Editor.fromTextArea(txtarea, config);
+			editor = Editor.fromTextArea(txtarea, config, this);
 		}
 	}
 

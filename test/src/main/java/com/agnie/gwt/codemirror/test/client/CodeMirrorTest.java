@@ -16,11 +16,14 @@
  ******************************************************************************/
 package com.agnie.gwt.codemirror.test.client;
 
+import com.agnie.gwt.codemirror.client.OnFocusEvent;
+import com.agnie.gwt.codemirror.client.OnFocusHandler;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -52,6 +55,13 @@ public class CodeMirrorTest implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				RootPanel.get().clear();
 				init();
+			}
+		});
+		test.addFocusHandler(new OnFocusHandler() {
+
+			@Override
+			public void onFocus(OnFocusEvent event) {
+				RootPanel.get().add(new Label("On focus event fired..."));
 			}
 		});
 		init();

@@ -16,37 +16,13 @@
  ******************************************************************************/
 package com.agnie.gwt.codemirror.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.TextAreaElement;
+import com.google.gwt.event.shared.EventHandler;
 
 /**
- * @author Pandurang Patil 11-Sep-2014
+ * @author Pandurang Patil 12-Sep-2014
  *
  */
-public class Editor extends JavaScriptObject {
+public interface OnFocusHandler extends EventHandler {
 
-	protected Editor() {
-
-	}
-
-	public static native Editor fromTextArea(TextAreaElement editor, Configuration configuration, CodeMirror cmw)
-	/*-{
-	 	cm = $wnd.CodeMirror.fromTextArea(editor, configuration);
-	 	cm.on("focus", function(cminst){
-			cmw.@com.agnie.gwt.codemirror.client.CodeMirror::onFocus(Lcom/google/gwt/core/client/JavaScriptObject;)(cminst);
-		});
-		return cm;
-		
-	}-*/;
-
-	/**
-	 * Retrieve contained Document object.
-	 * 
-	 * @return
-	 */
-	public final native EditorDocument getDocument()
-	/*-{
-		return this.doc;
-	}-*/;
-
+	void onFocus(OnFocusEvent event);
 }
