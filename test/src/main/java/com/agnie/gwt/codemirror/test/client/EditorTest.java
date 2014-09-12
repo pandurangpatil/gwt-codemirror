@@ -16,8 +16,10 @@
  ******************************************************************************/
 package com.agnie.gwt.codemirror.test.client;
 
+import com.agnie.gwt.codemirror.client.CodeMirror;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -32,12 +34,15 @@ public class EditorTest extends Composite {
 	interface EditorTestUiBinder extends UiBinder<Widget, EditorTest> {
 	}
 
+	@UiField
+	CodeMirror	editor;
+
 	public EditorTest() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	public EditorTest(String firstName) {
-		initWidget(uiBinder.createAndBindUi(this));
+	public String getValue() {
+		return editor.getEditor().getDocument().getValue();
 	}
 
 }

@@ -17,6 +17,10 @@
 package com.agnie.gwt.codemirror.test.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -24,6 +28,9 @@ import com.google.gwt.user.client.ui.RootPanel;
  *
  */
 public class CodeMirrorTest implements EntryPoint {
+	EditorTest	test		= new EditorTest();
+	Button		btnGetValue	= new Button("Get Value");
+	Button		btnRepaint	= new Button("Repaint");
 
 	/*
 	 * (non-Javadoc)
@@ -32,10 +39,28 @@ public class CodeMirrorTest implements EntryPoint {
 	 */
 	@Override
 	public void onModuleLoad() {
-		RootPanel.get().add(new EditorTest());
-		// CodeMirror mirror = new CodeMirror();
-		// mirror.setMode(EditorMode.HTMLMIXED);
-		// RootPanel.get().add(mirror);
+		btnGetValue.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				Window.alert(test.getValue());
+			}
+		});
+		btnRepaint.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				RootPanel.get().clear();
+				init();
+			}
+		});
+		init();
+	}
+
+	private void init() {
+		RootPanel.get().add(test);
+		RootPanel.get().add(btnGetValue);
+		RootPanel.get().add(btnRepaint);
 	}
 
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='codemirror'>
+	<inherits name="com.agnie.gwt.codemirror.mode.xml" />
+	<inherits name="com.agnie.gwt.codemirror.mode.javascript" />
+	<inherits name="com.agnie.gwt.codemirror.mode.css" />
+	<inherits name="com.agnie.gwt.codemirror.mode.vbscript" />
+	<public path="public" />
+	<script src="mode/htmlmixed/htmlmixed.js" />
+</module>

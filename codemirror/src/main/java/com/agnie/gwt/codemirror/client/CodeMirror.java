@@ -68,6 +68,10 @@ public class CodeMirror extends Composite {
 		config.setTheme(theme);
 	}
 
+	public void setKeyMap(String keyMap) {
+		config.setKeyMap(keyMap);
+	}
+
 	public void setLineNumbers(boolean flag) {
 		config.setLineNumbers(flag);
 	}
@@ -80,14 +84,18 @@ public class CodeMirror extends Composite {
 	protected void onLoad() {
 		super.onLoad();
 		GWT.log("Editor is being formed.");
-		editor = Editor.fromTextArea(txtarea, config);
-		// player = Player.createPlayer(divId, playerConfiguration);
+		if (editor == null) {
+			editor = Editor.fromTextArea(txtarea, config);
+		}
 	}
 
 	@Override
 	protected void onUnload() {
 		super.onUnload();
-		// player.destroy();
+	}
+
+	public Editor getEditor() {
+		return editor;
 	}
 
 }

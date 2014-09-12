@@ -17,26 +17,47 @@
 package com.agnie.gwt.codemirror.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.TextAreaElement;
 
 /**
- * @author Pandurang Patil 11-Sep-2014
+ * @author Pandurang Patil 12-Sep-2014
  *
  */
-public class Editor extends JavaScriptObject {
+public class EditorDocument extends JavaScriptObject {
 
-	protected Editor() {
+	protected EditorDocument() {
 
 	}
 
-	public static native Editor fromTextArea(TextAreaElement editor, Configuration configuration)
+	/**
+	 * Get the current editor content. You can pass it an optional argument to specify the string to be used to separate
+	 * lines
+	 * 
+	 * @return
+	 */
+	public final String getValue() {
+		return getValue("\n");
+	}
+
+	/**
+	 * Get the current editor content. You can pass it an optional argument to specify the string to be used to separate
+	 * lines
+	 * 
+	 * @param separator
+	 *            specify the string to be used to separate lines
+	 * @return
+	 */
+	public final native String getValue(String separator)
 	/*-{
-		return $wnd.CodeMirror.fromTextArea(editor, configuration);
+		return this.getValue(separator);
 	}-*/;
 
-	public final native EditorDocument getDocument()
+	/**
+	 * Set the editor content.
+	 * 
+	 * @param value
+	 */
+	public final native void setValue(String value)
 	/*-{
-		return this.doc;
+		this.setValue(value);
 	}-*/;
-
 }

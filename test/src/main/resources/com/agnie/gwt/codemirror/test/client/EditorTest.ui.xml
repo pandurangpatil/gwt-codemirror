@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:cm="urn:import:com.agnie.gwt.codemirror.client">
 
 	<g:HTMLPanel>
-		<cm:CodeMirror mode="JAVASCRIPT" theme="monokai"
-			lineNumbers="true" autoCloseBrackets="true"></cm:CodeMirror>
+		<cm:CodeMirror mode="HTMLMIXED" theme="monokai"
+			lineNumbers="true" autoCloseBrackets="true" keyMap="vim" ui:field="editor"></cm:CodeMirror>
 	</g:HTMLPanel>
 </ui:UiBinder> 
