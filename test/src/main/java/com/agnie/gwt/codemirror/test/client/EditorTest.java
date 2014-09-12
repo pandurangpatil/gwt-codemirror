@@ -50,4 +50,8 @@ public class EditorTest extends Composite {
 		return editor.getEditor().getDocument().getValue();
 	}
 
+	public CodeMirror getCodeMirror() {
+		return editor;
+	}
+
 }

@@ -25,15 +25,21 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 
 /**
  * @author Pandurang Patil 11-Sep-2014
  *
  */
 public class CodeMirrorTest implements EntryPoint {
-	EditorTest	test		= new EditorTest();
-	Button		btnGetValue	= new Button("Get Value");
-	Button		btnRepaint	= new Button("Repaint");
+	EditorTest	test			= new EditorTest();
+	Button		btnGetValue		= new Button("Get Value");
+	Button		btnRepaint		= new Button("Clear");
+	TextBox		txtLine			= new TextBox();
+	Button		btnGetLine		= new Button("Get Line");
+	Button		btnLineCount	= new Button("Line Count");
+	Button		btnundo			= new Button("undo");
+	Button		btnredo			= new Button("redo");
 
 	/*
 	 * (non-Javadoc)
@@ -64,6 +70,40 @@ public class CodeMirrorTest implements EntryPoint {
 				RootPanel.get().add(new Label("On focus event fired..."));
 			}
 		});
+
+		btnGetLine.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				Integer line = Integer.parseInt(txtLine.getValue());
+				RootPanel.get().add(new Label(test.getCodeMirror().getEditor().getDocument().getLine(line)));
+			}
+		});
+		btnLineCount.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				RootPanel.get().add(new Label("Total Line - " + test.getCodeMirror().getEditor().getDocument().lineCount()));
+			}
+		});
+		btnundo.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				test.getCodeMirror().getEditor().getDocument().undo();
+				RootPanel.get().add(new Label("undo clicked"));
+			}
+		});
+
+		btnredo.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				test.getCodeMirror().getEditor().getDocument().redo();
+				;
+				RootPanel.get().add(new Label("redo clicked"));
+			}
+		});
 		init();
 	}
 
@@ -71,6 +111,11 @@ public class CodeMirrorTest implements EntryPoint {
 		RootPanel.get().add(test);
 		RootPanel.get().add(btnGetValue);
 		RootPanel.get().add(btnRepaint);
+		RootPanel.get().add(txtLine);
+		RootPanel.get().add(btnGetLine);
+		RootPanel.get().add(btnLineCount);
+		RootPanel.get().add(btnundo);
+		RootPanel.get().add(btnredo);
 	}
 
 }
