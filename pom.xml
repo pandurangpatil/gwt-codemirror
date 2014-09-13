@@ -35,7 +35,7 @@
 		<repository>
 			<id>internal.repo</id>
 			<name>Internal Repository</name>
-			<url>file:///Users/pandurang/projects/pandurang-mvn-repo/releases</url>
+			<url>file:///Users/pandurang/projects/mvn-repo/releases</url>
 		</repository>
 	</distributionManagement>
 </project>
