@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<public path="public" />
+	<inherits name="com.agnie.gwt.codemirror.addon.fold_xml_fold" />
+	<script src="addon/edit/matchtags.js" />
+</module>

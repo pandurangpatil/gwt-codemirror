@@ -3,7 +3,7 @@
 <module rename-to='CodeMirrorTest'>
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.agnie.gwt.codemirror.codemirror" />
-	<inherits name="com.agnie.gwt.codemirror.addon.edit_closebrackets" />
+	<inherits name="com.agnie.gwt.codemirror.addon.edit_closetag" />
 	<inherits name="com.agnie.gwt.codemirror.mode.htmlmixed" />
 	<inherits name="com.agnie.gwt.codemirror.theme.monokai" />
 	<inherits name="com.agnie.gwt.codemirror.keymap.vim" />

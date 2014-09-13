@@ -469,6 +469,13 @@ public class Configuration extends JavaScriptObject {
 	}-*/;
 
 	/**
+	 * Enables auto closing of brackets require to inherit from com.agnie.gwt.codemirror.addon.edit_closebrackets module
+	 * 
+	 * Defines an option autoCloseBrackets that will auto-close brackets and quotes when typed. By default, it'll
+	 * auto-close ()[]{}''"", but you can pass it a string similar to that (containing pairs of matching characters), or
+	 * an object with pairs and optionally explode properties to customize it. explode should be a similar string that
+	 * gives the pairs of characters that, when enter is pressed between them, should have the second character also
+	 * moved to its own line.
 	 * 
 	 * @param autoCloseBrackets
 	 */
@@ -477,4 +484,41 @@ public class Configuration extends JavaScriptObject {
 		this.autoCloseBrackets = autoCloseBrackets;
 	}-*/;
 
+	/**
+	 * Enables auto closing of xml tags require to inherit from com.agnie.gwt.codemirror.addon.edit_closetags module
+	 * 
+	 * @param autoCloseTags
+	 */
+	public final native void setAutoCloseTags(Boolean autoCloseTags)
+	/*-{
+		this.autoCloseTags = autoCloseTags;
+	}-*/;
+
+	/**
+	 * Defines an option matchTags that, when enabled, will cause the tags around the cursor to be highlighted (using
+	 * the CodeMirror-matchingtag class). Also defines a command toMatchingTag, which you can bind a key to in order to
+	 * jump to the tag mathing the one under the cursor. Depends on the addon/fold/xml-fold.js addon. Demo here.
+	 * 
+	 * require to inherit from com.agnie.gwt.codemirror.addon.edit_matchbrackets module
+	 * 
+	 * @param matchBrackets
+	 */
+	public final native void setMatchBrackets(Boolean matchBrackets)
+	/*-{
+		this.matchBrackets = matchBrackets;
+	}-*/;
+
+	/**
+	 * Defines an option matchTags that, when enabled, will cause the tags around the cursor to be highlighted (using
+	 * the CodeMirror-matchingtag class). Also defines a command toMatchingTag, which you can bind a key to in order to
+	 * jump to the tag mathing the one under the cursor. Depends on the addon/fold/xml-fold.js addon.
+	 * 
+	 * require to inherit from com.agnie.gwt.codemirror.addon.edit_matchtags module
+	 * 
+	 * @param matchTags
+	 */
+	public final native void setMatchTags(Boolean matchTags)
+	/*-{
+		this.matchTags = matchTags;
+	}-*/;
 }

@@ -59,10 +59,9 @@ public class CodeMirror extends Composite {
 		txtarea.setId(editorId);
 	}
 
-	public void setMode(EditorMode mode) {
-		GWT.log("Mode is set to " + mode.name());
+	public void setMode(String mode) {
 		Mode configMode = (Mode) Mode.createObject();
-		configMode.setName(mode.getMode());
+		configMode.setName(mode);
 		config.setMode(configMode);
 	}
 
@@ -80,6 +79,18 @@ public class CodeMirror extends Composite {
 
 	public void setAutoCloseBrackets(boolean autoCloseBrackets) {
 		config.setAutoCloseBrackets(autoCloseBrackets);
+	}
+
+	public void setAutoCloseTags(boolean autoCloseTags) {
+		config.setAutoCloseTags(autoCloseTags);
+	}
+
+	public void setMatchBrackets(boolean matchBrackets) {
+		config.setMatchBrackets(matchBrackets);
+	}
+
+	public void setMatchTags(boolean matchTags) {
+		config.setMatchTags(matchTags);
 	}
 
 	/**
