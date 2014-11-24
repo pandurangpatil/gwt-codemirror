@@ -59,18 +59,16 @@ public class CodeMirror extends Composite {
 		txtarea.setId(editorId);
 	}
 
-	public void setMode(String mode) {
-		Mode configMode = (Mode) Mode.createObject();
-		configMode.setName(mode);
-		config.setMode(configMode);
+	public void setMode(CMMode mode) {
+		config.setMode(mode.getMode());
 	}
 
-	public void setTheme(String theme) {
-		config.setTheme(theme);
+	public void setTheme(Theme theme) {
+		config.setTheme(theme.getTheme());
 	}
 
-	public void setKeyMap(String keyMap) {
-		config.setKeyMap(keyMap);
+	public void setKeyMap(KeyMap keyMap) {
+		config.setKeyMap(keyMap.getKey());
 	}
 
 	public void setLineNumbers(boolean flag) {
