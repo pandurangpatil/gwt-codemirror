@@ -56,8 +56,8 @@ your .ui.xml
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:cm="urn:import:com.agnie.gwt.codemirror.client">
 
 	<g:HTMLPanel>
-		<cm:CodeMirror mode="htmlmixed" theme="monokai"
-			lineNumbers="true" autoCloseBrackets="true" keyMap="vim" ui:field="editor"></cm:CodeMirror>
+		<cm:CodeMirror mode="HTML_MIXED" theme="MONOKAI"
+			lineNumbers="true" autoCloseBrackets="true" keyMap="VIM" ui:field="editor"></cm:CodeMirror>
 	</g:HTMLPanel>
 </ui:UiBinder> 
 ```
