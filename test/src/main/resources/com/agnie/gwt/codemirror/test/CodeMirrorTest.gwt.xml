@@ -10,6 +10,7 @@
 	<inherits name="com.agnie.gwt.codemirror.mode.htmlmixed" />
 	<inherits name="com.agnie.gwt.codemirror.theme.monokai" />
 	<inherits name="com.agnie.gwt.codemirror.keymap.vim" />
+	<inherits name="com.agnie.gwt.codemirror.keymap.sublime" />
 	<source path="client" />
 	<entry-point class="com.agnie.gwt.codemirror.test.client.CodeMirrorTest">
 	</entry-point>
