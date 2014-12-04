@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	<public path="public" />
+	<public path="resources" />
+	<source path='resources' />
 	<inherits name="com.agnie.gwt.codemirror.addon.fold_xml_fold" />
-	<script src="addon/edit/closetag.js" />
+	<entry-point
+		class="com.agnie.gwt.codemirror.addon.resources.CloseTagEntry" />
 </module>

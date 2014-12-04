@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.agnie.gwt</groupId>
 	<artifactId>gwt-codemirror</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<packaging>pom</packaging>
 	<name>Parent of GWT code mirror module</name>
 	<properties>
@@ -14,12 +14,15 @@
 		<!-- GWT needs at least java 1.5 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<scm>
+		<developerConnection>scm:git:git@github.com:Agnie-Software/gwt-codemirror.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 	<modules>
 		<module>codemirror</module>
 		<module>test</module>
 	</modules>
 	<build>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -28,6 +31,11 @@
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.1</version>
 			</plugin>
 		</plugins>
 	</build>

@@ -14,4 +14,7 @@
 	<source path="client" />
 	<entry-point class="com.agnie.gwt.codemirror.test.client.CodeMirrorTest">
 	</entry-point>
+	<add-linker name="xsiframe" />
+	<set-configuration-property name='xsiframe.failIfScriptTag'
+		value='FALSE' />
 </module>

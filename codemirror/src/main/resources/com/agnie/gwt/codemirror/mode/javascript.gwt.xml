@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	<public path="public" />
-	<script src="mode/javascript/javascript.js" />
+	<public path="resources" />
+	<source path='resources' />
+	<entry-point class="com.agnie.gwt.codemirror.mode.resources.JavaScriptEntry" />
 </module>

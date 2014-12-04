@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module rename-to='codemirror'>
+<module>
 	<public path="resources" />
 	<source path='resources' />
-	<entry-point class="com.agnie.gwt.codemirror.mode.resources.CssEntry" />
+	<entry-point class="com.agnie.gwt.codemirror.keymap.resources.EmacsEntry" />
 </module>

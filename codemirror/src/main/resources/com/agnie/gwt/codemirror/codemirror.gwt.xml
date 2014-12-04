@@ -4,5 +4,5 @@
 	<source path='client' />
 	<public path="public" />
 	<stylesheet src="lib/codemirror.css" />
-	<script src="lib/codemirror.js" />
+	<entry-point class="com.agnie.gwt.codemirror.client.CodeMirrorEntiryPoint" />
 </module>

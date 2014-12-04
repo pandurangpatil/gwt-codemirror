@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='codemirror'>
-	<public path="public" />
-	<script src="mode/xml/xml.js" />
+	<public path="resources" />
+	<source path='resources' />
+	<entry-point class="com.agnie.gwt.codemirror.mode.resources.XMLEntry" />
 </module>

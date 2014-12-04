@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	<public path="public" />
-	<script src="addon/edit/matchbrackets.js" />
+	<public path="resources" />
+	<source path='resources' />
+	<entry-point
+		class="com.agnie.gwt.codemirror.addon.resources.MatchBracketsEntry" />
 </module>
