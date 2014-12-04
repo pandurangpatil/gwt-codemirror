@@ -64,12 +64,13 @@ your .ui.xml
 
 Fore more detail working sample refer [test](https://github.com/Agnie-Software/gwt-codemirror/tree/master/test) sample project
 
+version - 1.1 contains changes to support xsiframe mode.
 **Maven Dependency**
 ```
 	<dependency>
 		<groupId>com.agnie.gwt</groupId>
 		<artifactId>codemirror</artifactId>
-		<version>1.0</version>
+		<version>1.1</version>
 		<scope>provided</scope>
 	</dependency>
 ```
