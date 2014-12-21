@@ -64,13 +64,19 @@ your .ui.xml
 
 Fore more detail working sample refer [test](https://github.com/Agnie-Software/gwt-codemirror/tree/master/test) sample project
 
-version - 1.1 contains changes to support xsiframe mode.
+1. version - 1.1 contains changes to support xsiframe mode.
+2. version - 1.2 contains Following changes.
+	- support for onBlur handler
+	- refresh
+	- set height and width
+	- added support for formating.js however CodeMirror has stopped supporting it after 3.1 release hence it may contain few issues. For more detail refer Original JavaScript code mirror repo.
+
 **Maven Dependency**
 ```
 	<dependency>
 		<groupId>com.agnie.gwt</groupId>
 		<artifactId>codemirror</artifactId>
-		<version>1.1</version>
+		<version>1.2</version>
 		<scope>provided</scope>
 	</dependency>
 ```
