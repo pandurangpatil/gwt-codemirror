@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<public path="resources" />
+	<source path='resources' />
+	<entry-point class="com.agnie.gwt.codemirror.addon.resources.FormatEntry" />
+</module>

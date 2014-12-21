@@ -16,6 +16,7 @@
  ******************************************************************************/
 package com.agnie.gwt.codemirror.client;
 
+import com.agnie.gwt.codemirror.addon.resources.Cursor;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.TextAreaElement;
@@ -43,9 +44,8 @@ public class CodeMirror extends Composite {
 	TextAreaElement				txtarea;
 
 	HTMLPanel					container;
-
-	// Event bus to handl events
-	static SimpleEventBus		eventBus		= new SimpleEventBus();
+	String						height;
+	String						width;
 	private SimpleEventBus		privateEventBus	= new SimpleEventBus();
 	// Unique text area id generated for this editor
 	private final String		editorId;
@@ -106,6 +106,14 @@ public class CodeMirror extends Composite {
 		privateEventBus.fireEvent(new OnFocusEvent(ed));
 	}
 
+	public HandlerRegistration addBlurHandler(OnBlurHandler handler) {
+		return privateEventBus.addHandler(OnBlurEvent.TYPE, handler);
+	}
+
+	void onBlur() {
+		privateEventBus.fireEvent(new OnBlurEvent(editor));
+	}
+
 	@Override
 	protected void onLoad() {
 		super.onLoad();
@@ -113,6 +121,8 @@ public class CodeMirror extends Composite {
 		if (editor == null) {
 			editor = Editor.fromTextArea(txtarea, config, this);
 		}
+		editor.setSize(width, height);
+		editor.refresh();
 	}
 
 	@Override
@@ -122,6 +132,34 @@ public class CodeMirror extends Composite {
 
 	public Editor getEditor() {
 		return editor;
+	}
+
+	/**
+	 * @param height
+	 *            height in pixel or percentage e.g. for 100px - "100" for 100% - "100%"
+	 */
+	@Override
+	public void setHeight(String height) {
+		super.setHeight(height);
+		this.height = height;
+	}
+
+	/**
+	 * @param width
+	 *            width in pixel or percentage e.g. for 100px - "100" for 100% - "100%"
+	 */
+	@Override
+	public void setWidth(String width) {
+		super.setWidth(width);
+		this.width = width;
+	}
+
+	public void formatAllContent() {
+		editor.formatAllContent();
+	}
+
+	public void autoFormatRange(Cursor from, Cursor to) {
+		editor.autoFormatRange(from, to);
 	}
 
 }

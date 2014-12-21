@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.agnie.gwt</groupId>
 	<artifactId>gwt-codemirror</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 	<packaging>pom</packaging>
 	<name>Parent of GWT code mirror module</name>
 	<properties>

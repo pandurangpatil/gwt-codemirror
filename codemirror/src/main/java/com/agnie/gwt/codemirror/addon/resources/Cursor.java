@@ -14,66 +14,38 @@
  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  ******************************************************************************/
-package com.agnie.gwt.codemirror.client;
+package com.agnie.gwt.codemirror.addon.resources;
 
-import com.agnie.gwt.codemirror.addon.resources.Cursor;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.TextAreaElement;
 
 /**
- * @author Pandurang Patil 11-Sep-2014
+ * 
+ * @author Pandurang Patil 21-Dec-2014
  *
  */
-public class Editor extends JavaScriptObject {
+public class Cursor extends JavaScriptObject {
 
-	protected Editor() {
-
+	protected Cursor() {
 	}
 
-	public static native Editor fromTextArea(TextAreaElement editor, Configuration configuration, CodeMirror cmw)
+	public final native void setLine(Integer line)
 	/*-{
-	 	cm = $wnd.CodeMirror.fromTextArea(editor, configuration);
-	 	cm.on("focus", function(cminst){
-			cmw.@com.agnie.gwt.codemirror.client.CodeMirror::onFocus(Lcom/google/gwt/core/client/JavaScriptObject;)(cminst);
-		});
-		cm.on("blur", function(){
-			cmw.@com.agnie.gwt.codemirror.client.CodeMirror::onBlur()();
-		});
-		return cm;
-		
+		this.line = line;
 	}-*/;
 
-	/**
-	 * Retrieve contained Document object.
-	 * 
-	 * @return
-	 */
-	public final native EditorDocument getDocument()
+	public final native Integer getLine()
 	/*-{
-		return this.doc;
+		return this.line;
 	}-*/;
 
-	public final native void refresh()
+	public final native void setCharacterPosition(Integer ch)
 	/*-{
-	 	this.refresh();
+		this.ch = ch;
 	}-*/;
 
-	public final native void setSize(String width, String height)
+	public final native Integer getCharacterPosition()
 	/*-{
-		this.setSize( width, height );
+		return this.ch;
 	}-*/;
 
-	public final void formatAllContent() {
-		Cursor from = (Cursor) Cursor.createObject();
-		from.setLine(0);
-		from.setCharacterPosition(0);
-		Cursor to = (Cursor) Cursor.createObject();
-		to.setLine(getDocument().lineCount());
-		autoFormatRange(from, to);
-	}
-
-	public final native void autoFormatRange(Cursor from, Cursor to)
-	/*-{
-		this.autoFormatRange( from, to );
-	}-*/;
 }

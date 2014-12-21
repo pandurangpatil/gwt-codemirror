@@ -16,6 +16,8 @@
  ******************************************************************************/
 package com.agnie.gwt.codemirror.test.client;
 
+import com.agnie.gwt.codemirror.client.OnBlurEvent;
+import com.agnie.gwt.codemirror.client.OnBlurHandler;
 import com.agnie.gwt.codemirror.client.OnFocusEvent;
 import com.agnie.gwt.codemirror.client.OnFocusHandler;
 import com.google.gwt.core.client.EntryPoint;
@@ -100,11 +102,23 @@ public class CodeMirrorTest implements EntryPoint {
 			@Override
 			public void onClick(ClickEvent event) {
 				test.getCodeMirror().getEditor().getDocument().redo();
-				;
 				RootPanel.get().add(new Label("redo clicked"));
 			}
 		});
 		init();
+		RootPanel.get().remove(test);
+		test.getCodeMirror().addBlurHandler(new OnBlurHandler() {
+
+			@Override
+			public void onBlur(OnBlurEvent event) {
+				RootPanel.get().add(new Label("on blur even occured"));
+			}
+		});
+		test.getCodeMirror().setHeight("100px");
+		test.getCodeMirror().setWidth("600px");
+		test.setValue("<html><head><title>sample code</title></head><body>Sample content<script>function sample(){var t =10;}</script></body></html>");
+		test.getCodeMirror().formatAllContent();
+		RootPanel.get().add(test);
 	}
 
 	private void init() {

@@ -14,48 +14,25 @@
  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  ******************************************************************************/
-package com.agnie.gwt.codemirror.test.client;
+package com.agnie.gwt.codemirror.addon.resources;
 
-import com.agnie.gwt.codemirror.client.CodeMirror;
-import com.agnie.gwt.codemirror.client.OnFocusHandler;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.ScriptInjector;
 
 /**
- * @author Pandurang Patil 11-Sep-2014
+ * @author Pandurang Patil 04-Dec-2014
  *
  */
-public class EditorTest extends Composite {
+public class FormatEntry implements EntryPoint {
 
-	private static EditorTestUiBinder	uiBinder	= GWT.create(EditorTestUiBinder.class);
-
-	interface EditorTestUiBinder extends UiBinder<Widget, EditorTest> {
-	}
-
-	@UiField
-	CodeMirror	editor;
-
-	public EditorTest() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
-
-	public void addFocusHandler(OnFocusHandler handler) {
-		editor.addFocusHandler(handler);
-	}
-
-	public String getValue() {
-		return editor.getEditor().getDocument().getValue();
-	}
-
-	public CodeMirror getCodeMirror() {
-		return editor;
-	}
-
-	public void setValue(String value) {
-		editor.getEditor().getDocument().setValue(value);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
+	 */
+	@Override
+	public void onModuleLoad() {
+		ScriptInjector.fromString(AddOnResources.INSTANCE.format().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
 
 }

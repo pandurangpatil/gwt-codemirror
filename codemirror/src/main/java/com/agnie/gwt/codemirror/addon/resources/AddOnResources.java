@@ -41,4 +41,7 @@ public interface AddOnResources extends ClientBundle {
 
 	@Source("addon/fold/xml-fold.js")
 	TextResource xmlfold();
+
+	@Source("addon/format/formatting.js")
+	TextResource format();
 }
