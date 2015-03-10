@@ -34,136 +34,136 @@ import com.google.web.bindery.event.shared.HandlerRegistration;
  */
 public class CodeMirror extends Composite {
 
-	interface MyUiBinder extends UiBinder<Widget, CodeMirror> {
-	}
+    interface MyUiBinder extends UiBinder<Widget, CodeMirror> {
+    }
 
-	private static MyUiBinder	uiBinder		= GWT.create(MyUiBinder.class);
+    private static MyUiBinder uiBinder        = GWT.create(MyUiBinder.class);
 
-	// Text area
-	@UiField
-	TextAreaElement				txtarea;
+    // Text area
+    @UiField
+    TextAreaElement           txtarea;
 
-	HTMLPanel					container;
-	String						height;
-	String						width;
-	private SimpleEventBus		privateEventBus	= new SimpleEventBus();
-	// Unique text area id generated for this editor
-	private final String		editorId;
-	private Editor				editor;
-	private Configuration		config			= (Configuration) Configuration.createObject();
+    HTMLPanel                 container;
+    String                    height;
+    String                    width;
+    private SimpleEventBus    privateEventBus = new SimpleEventBus();
+    // Unique text area id generated for this editor
+    private final String      editorId;
+    private Editor            editor;
+    private Configuration     config          = (Configuration) Configuration.createObject();
 
-	public CodeMirror() {
-		this.editorId = "code-mirror-" + System.currentTimeMillis();
-		container = (HTMLPanel) uiBinder.createAndBindUi(this);
-		initWidget(container);
-		txtarea.setId(editorId);
-	}
+    public CodeMirror() {
+        this.editorId = "code-mirror-" + System.currentTimeMillis();
+        container = (HTMLPanel) uiBinder.createAndBindUi(this);
+        initWidget(container);
+        txtarea.setId(editorId);
+    }
 
-	public void setMode(CMMode mode) {
-		config.setMode(mode.getMode());
-	}
+    public void setMode(CMMode mode) {
+        config.setMode(mode.getMode());
+    }
 
-	public void setTheme(Theme theme) {
-		config.setTheme(theme.getTheme());
-	}
+    public void setTheme(Theme theme) {
+        config.setTheme(theme.getTheme());
+    }
 
-	public void setKeyMap(KeyMap keyMap) {
-		config.setKeyMap(keyMap.getKey());
-	}
+    public void setKeyMap(KeyMap keyMap) {
+        config.setKeyMap(keyMap.getKey());
+    }
 
-	public void setLineNumbers(boolean flag) {
-		config.setLineNumbers(flag);
-	}
+    public void setLineNumbers(boolean flag) {
+        config.setLineNumbers(flag);
+    }
 
-	public void setAutoCloseBrackets(boolean autoCloseBrackets) {
-		config.setAutoCloseBrackets(autoCloseBrackets);
-	}
+    public void setAutoCloseBrackets(boolean autoCloseBrackets) {
+        config.setAutoCloseBrackets(autoCloseBrackets);
+    }
 
-	public void setAutoCloseTags(boolean autoCloseTags) {
-		config.setAutoCloseTags(autoCloseTags);
-	}
+    public void setAutoCloseTags(boolean autoCloseTags) {
+        config.setAutoCloseTags(autoCloseTags);
+    }
 
-	public void setMatchBrackets(boolean matchBrackets) {
-		config.setMatchBrackets(matchBrackets);
-	}
+    public void setMatchBrackets(boolean matchBrackets) {
+        config.setMatchBrackets(matchBrackets);
+    }
 
-	public void setMatchTags(boolean matchTags) {
-		config.setMatchTags(matchTags);
-	}
+    public void setMatchTags(boolean matchTags) {
+        config.setMatchTags(matchTags);
+    }
 
-	/**
-	 * Add focus handler
-	 * 
-	 * @param handler
-	 * @return
-	 */
-	public HandlerRegistration addFocusHandler(OnFocusHandler handler) {
-		return privateEventBus.addHandler(OnFocusEvent.TYPE, handler);
-	}
+    /**
+     * Add focus handler
+     * 
+     * @param handler
+     * @return
+     */
+    public HandlerRegistration addFocusHandler(OnFocusHandler handler) {
+        return privateEventBus.addHandler(OnFocusEvent.TYPE, handler);
+    }
 
-	void onFocus(JavaScriptObject editor) {
-		Editor ed = (Editor) editor;
-		privateEventBus.fireEvent(new OnFocusEvent(ed));
-	}
+    void onFocus(JavaScriptObject editor) {
+        Editor ed = (Editor) editor;
+        privateEventBus.fireEvent(new OnFocusEvent(ed));
+    }
 
-	public HandlerRegistration addBlurHandler(OnBlurHandler handler) {
-		return privateEventBus.addHandler(OnBlurEvent.TYPE, handler);
-	}
+    public HandlerRegistration addBlurHandler(OnBlurHandler handler) {
+        return privateEventBus.addHandler(OnBlurEvent.TYPE, handler);
+    }
 
-	void onBlur() {
-		privateEventBus.fireEvent(new OnBlurEvent(editor));
-	}
-	
-	void setReadOnlyMode(boolean state){
-		config.setReadOnly(state);
-	}
+    void onBlur() {
+        privateEventBus.fireEvent(new OnBlurEvent(editor));
+    }
 
-	@Override
-	protected void onLoad() {
-		super.onLoad();
-		GWT.log("Editor is being formed.");
-		if (editor == null) {
-			editor = Editor.fromTextArea(txtarea, config, this);
-		}
-		editor.setSize(width, height);
-		editor.refresh();
-	}
+    public void setReadOnlyMode(boolean state) {
+        config.setReadOnly(state);
+    }
 
-	@Override
-	protected void onUnload() {
-		super.onUnload();
-	}
+    @Override
+    protected void onLoad() {
+        super.onLoad();
+        GWT.log("Editor is being formed.");
+        if (editor == null) {
+            editor = Editor.fromTextArea(txtarea, config, this);
+        }
+        editor.setSize(width, height);
+        editor.refresh();
+    }
 
-	public Editor getEditor() {
-		return editor;
-	}
+    @Override
+    protected void onUnload() {
+        super.onUnload();
+    }
 
-	/**
-	 * @param height
-	 *            height in pixel or percentage e.g. for 100px - "100" for 100% - "100%"
-	 */
-	@Override
-	public void setHeight(String height) {
-		super.setHeight(height);
-		this.height = height;
-	}
+    public Editor getEditor() {
+        return editor;
+    }
 
-	/**
-	 * @param width
-	 *            width in pixel or percentage e.g. for 100px - "100" for 100% - "100%"
-	 */
-	@Override
-	public void setWidth(String width) {
-		super.setWidth(width);
-		this.width = width;
-	}
+    /**
+     * @param height
+     *            height in pixel or percentage e.g. for 100px - "100" for 100% - "100%"
+     */
+    @Override
+    public void setHeight(String height) {
+        super.setHeight(height);
+        this.height = height;
+    }
 
-	public void formatAllContent() {
-		editor.formatAllContent();
-	}
+    /**
+     * @param width
+     *            width in pixel or percentage e.g. for 100px - "100" for 100% - "100%"
+     */
+    @Override
+    public void setWidth(String width) {
+        super.setWidth(width);
+        this.width = width;
+    }
 
-	public void autoFormatRange(Cursor from, Cursor to) {
-		editor.autoFormatRange(from, to);
-	}
+    public void formatAllContent() {
+        editor.formatAllContent();
+    }
+
+    public void autoFormatRange(Cursor from, Cursor to) {
+        editor.autoFormatRange(from, to);
+    }
 
 }
