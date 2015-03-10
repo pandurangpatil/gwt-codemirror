@@ -113,6 +113,10 @@ public class CodeMirror extends Composite {
 	void onBlur() {
 		privateEventBus.fireEvent(new OnBlurEvent(editor));
 	}
+	
+	void setReadOnlyMode(boolean state){
+		config.setReadOnly(state);
+	}
 
 	@Override
 	protected void onLoad() {
