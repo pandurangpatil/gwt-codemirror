@@ -34,102 +34,104 @@ import com.google.gwt.user.client.ui.TextBox;
  *
  */
 public class CodeMirrorTest implements EntryPoint {
-	EditorTest	test			= new EditorTest();
-	Button		btnGetValue		= new Button("Get Value");
-	Button		btnRepaint		= new Button("Clear");
-	TextBox		txtLine			= new TextBox();
-	Button		btnGetLine		= new Button("Get Line");
-	Button		btnLineCount	= new Button("Line Count");
-	Button		btnundo			= new Button("undo");
-	Button		btnredo			= new Button("redo");
+    EditorTest test         = new EditorTest();
+    Button     btnGetValue  = new Button("Get Value");
+    Button     btnRepaint   = new Button("Clear");
+    TextBox    txtLine      = new TextBox();
+    Button     btnGetLine   = new Button("Get Line");
+    Button     btnLineCount = new Button("Line Count");
+    Button     btnundo      = new Button("undo");
+    Button     btnredo      = new Button("redo");
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
-	 */
-	@Override
-	public void onModuleLoad() {
-		btnGetValue.addClickHandler(new ClickHandler() {
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
+     */
+    @Override
+    public void onModuleLoad() {
+        btnGetValue.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				Window.alert(test.getValue());
-			}
-		});
-		btnRepaint.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                Window.alert(test.getValue());
+            }
+        });
+        btnRepaint.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				RootPanel.get().clear();
-				init();
-			}
-		});
-		test.addFocusHandler(new OnFocusHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get().clear();
+                init();
+            }
+        });
+        test.addFocusHandler(new OnFocusHandler() {
 
-			@Override
-			public void onFocus(OnFocusEvent event) {
-				RootPanel.get().add(new Label("On focus event fired..."));
-			}
-		});
+            @Override
+            public void onFocus(OnFocusEvent event) {
+                RootPanel.get().add(new Label("On focus event fired..."));
+            }
+        });
 
-		btnGetLine.addClickHandler(new ClickHandler() {
+        btnGetLine.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				Integer line = Integer.parseInt(txtLine.getValue());
-				RootPanel.get().add(new Label(test.getCodeMirror().getEditor().getDocument().getLine(line)));
-			}
-		});
-		btnLineCount.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                Integer line = Integer.parseInt(txtLine.getValue());
+                RootPanel.get().add(new Label(test.getCodeMirror().getEditor().getDocument().getLine(line)));
+            }
+        });
+        btnLineCount.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				RootPanel.get().add(new Label("Total Line - " + test.getCodeMirror().getEditor().getDocument().lineCount()));
-			}
-		});
-		btnundo.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get().add(new Label("Total Line - " + test.getCodeMirror().getEditor().getDocument().lineCount()));
+            }
+        });
+        btnundo.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				test.getCodeMirror().getEditor().getDocument().undo();
-				RootPanel.get().add(new Label("undo clicked"));
-			}
-		});
+            @Override
+            public void onClick(ClickEvent event) {
+                test.getCodeMirror().getEditor().getDocument().undo();
+                RootPanel.get().add(new Label("undo clicked"));
+            }
+        });
 
-		btnredo.addClickHandler(new ClickHandler() {
+        btnredo.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				test.getCodeMirror().getEditor().getDocument().redo();
-				RootPanel.get().add(new Label("redo clicked"));
-			}
-		});
-		init();
-		RootPanel.get().remove(test);
-		test.getCodeMirror().addBlurHandler(new OnBlurHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                test.getCodeMirror().getEditor().getDocument().redo();
+                RootPanel.get().add(new Label("redo clicked"));
+            }
+        });
+        init();
+        RootPanel.get().remove(test);
 
-			@Override
-			public void onBlur(OnBlurEvent event) {
-				RootPanel.get().add(new Label("on blur even occured"));
-			}
-		});
-		test.getCodeMirror().setHeight("100px");
-		test.getCodeMirror().setWidth("600px");
-		test.setValue("<html><head><title>sample code</title></head><body>Sample content<script>function sample(){var t =10;}</script></body></html>");
-		test.getCodeMirror().formatAllContent();
-		RootPanel.get().add(test);
-	}
+        test.getCodeMirror().addBlurHandler(new OnBlurHandler() {
 
-	private void init() {
-		RootPanel.get().add(test);
-		RootPanel.get().add(btnGetValue);
-		RootPanel.get().add(btnRepaint);
-		RootPanel.get().add(txtLine);
-		RootPanel.get().add(btnGetLine);
-		RootPanel.get().add(btnLineCount);
-		RootPanel.get().add(btnundo);
-		RootPanel.get().add(btnredo);
-	}
+            @Override
+            public void onBlur(OnBlurEvent event) {
+                RootPanel.get().add(new Label("on blur even occured"));
+            }
+        });
+        test.getCodeMirror().setHeight("100px");
+        test.getCodeMirror().setWidth("600px");
+        test.setValue("<html><head><title>sample code</title></head><body>Sample content<script>function sample(){var t =10;}</script></body></html>");
+        test.getCodeMirror().formatAllContent();
+
+        RootPanel.get().add(test);
+    }
+
+    private void init() {
+        RootPanel.get().add(test);
+        RootPanel.get().add(btnGetValue);
+        RootPanel.get().add(btnRepaint);
+        RootPanel.get().add(txtLine);
+        RootPanel.get().add(btnGetLine);
+        RootPanel.get().add(btnLineCount);
+        RootPanel.get().add(btnundo);
+        RootPanel.get().add(btnredo);
+    }
 
 }
